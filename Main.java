@@ -12,16 +12,11 @@ class Dot {
         this.coordinates = coordinates;
     }
 
-    public Dot() {
-
-    }
+    public Dot() {}
 
     public String toString(){
         return   "coordinates: " + coordinates;
     }
-
-
-
 }
 
 public class Main {
@@ -42,6 +37,7 @@ public class Main {
             Dot[] centroids = new Dot[k];
 
             for (int i = 0; i < k; i++) centroids[i] = moveCentroid(i, size, basicMap);
+            
             newMap = classify(k, basicMap, size, centroids);
             System.out.println(log(newMap, k));
             boolean isSizeChanged = false;
@@ -76,7 +72,8 @@ public class Main {
                 for (int l = j + 1; l < map.get(i).size(); l++) {
                     double tmp = 0;
                     for (int m = 0; m < map.get(i).get(j).coordinates.size(); m++) {
-                        tmp += Math.pow((Double.parseDouble(map.get(i).get(j).coordinates.get(m)) - Double.parseDouble(map.get(i).get(l).coordinates.get(m))), 2);
+                        tmp += Math.pow((Double.parseDouble(map.get(i).get(j).coordinates.get(m)) 
+                                         - Double.parseDouble(map.get(i).get(l).coordinates.get(m))), 2);
                     }
                     sum += tmp;
                 }
@@ -113,7 +110,6 @@ public class Main {
             if (!tmpMap.containsKey(i)) tmpMap.put(i, new ArrayList<>());
             tmpMap.get(i).add(new Dot(scn.nextLine()));
         }
-
         return tmpMap;
     }
 
